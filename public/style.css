@@ -1,0 +1,139 @@
+:root {
+  --verde-lafe: #006633;
+  --verde-oscuro: #004d26;
+  --verde-claro: #e8f5e9;
+  --blanco: #ffffff;
+  --gris-fondo: #f4f7f6;
+  --texto: #2c3e50;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background-color: var(--gris-fondo); color: var(--texto); display: flex; flex-direction: column; min-height: 100vh; }
+
+header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 5px solid var(--verde-oscuro); }
+.brand { display: flex; align-items: center; gap: 15px; }
+.brand img { height: 60px; }
+.brand h1 { font-size: 1.8rem; font-weight: 700; margin: 0; }
+
+.hero { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; text-align: center; }
+.hero h2 { font-size: 2rem; color: var(--verde-lafe); margin-bottom: 10px; }
+.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 20px 0 40px 0; }
+
+.option-card { background: var(--blanco); border: 2px solid #e0e0e0; border-radius: 12px; padding: 25px; width: 280px; cursor: pointer; transition: 0.3s; }
+.option-card:hover { border-color: var(--verde-lafe); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+.option-card h3 { color: var(--verde-lafe); margin-bottom: 10px; }
+
+/* WIDGET DEL CLUB RESTAURADO */
+.club-widget { background: var(--verde-lafe); padding: 10px; border-radius: 12px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: center; max-width: 800px; width: 100%; margin: 20px auto; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.widget-posiciones { flex: 1; min-width: 300px; background: white; border-radius: 8px; overflow: hidden; }
+.tabla-widget { width: 100%; border-collapse: collapse; font-size: 0.85rem; color: #333; }
+.tabla-widget th { background: #5a2a2a; color: white; padding: 8px; text-align: center; }
+.tabla-widget td { padding: 8px; text-align: center; border-bottom: 1px solid #eee; }
+.tabla-widget td:nth-child(2) { text-align: left; font-weight: bold; }
+.widget-proximo { flex: 1; background: white; color: #333; min-width: 300px; padding: 20px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px solid #ddd; display: flex; justify-content: center; align-items: center; height: 100%; }
+
+.section-container { display: none; max-width: 900px; margin: 30px auto; padding: 20px; width: 100%; }
+.active-section { display: block; }
+.card { background: var(--blanco); padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 4px solid var(--verde-lafe); }
+.card h3 { color: var(--verde-lafe); border-bottom: 2px solid var(--verde-claro); padding-bottom: 10px; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; outline: none; resize: vertical; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--verde-lafe); }
+
+.btn { background-color: var(--verde-lafe); color: var(--blanco); padding: 12px 20px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+.btn:hover:not(:disabled) { background-color: var(--verde-oscuro); }
+.btn:disabled { opacity: 0.7; cursor: not-allowed; }
+.btn-secondary { background-color: #6c757d; margin-bottom: 15px; width: auto; }
+.btn-small { padding: 6px 12px; font-size: 0.85rem; width: auto; }
+
+.time-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; }
+.time-slot-btn { padding: 10px; border: 1px solid var(--verde-lafe); border-radius: 6px; background-color: var(--verde-claro); color: var(--verde-lafe); cursor: pointer; font-weight: 600; }
+.tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+.tab-btn { flex: 1; padding: 10px; background: #e0e0e0; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.tab-btn.active { background: var(--verde-lafe); color: var(--blanco); }
+
+.table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tabla-hospital { width: 100%; border-collapse: collapse; margin-top: 15px; min-width: 600px; }
+.tabla-hospital th, .tabla-hospital td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+.tabla-hospital th { background-color: var(--verde-lafe); color: white; }
+
+.spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 16px; height: 16px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* FOOTER Y SPONSORS RESTAURADOS */
+.site-footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: auto; }
+.footer-content p { margin-bottom: 10px; font-weight: bold; }
+.sponsors { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.sponsor-badge { background: #555; padding: 5px 15px; border-radius: 4px; font-size: 0.85rem; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+  .section-container, .card { box-shadow: none; border: none; margin: 0; padding: 0; }
+  #panelMedico { display: block; position: absolute; top: 0; left: 0; width: 100%; }
+  .tabla-hospital th { background-color: #ddd !important; color: black !important; }
+}
+/* FOOTER Y SPONSORS ACTUALIZADOS */
+.site-footer { 
+  background-color: #006633; 
+  color: white; 
+  padding: 20px 40px; 
+  margin-top: auto; 
+  border-top: 5px solid #004d26; 
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Evita que se rompa en pantallas chicas */
+}
+
+.footer-izq p { 
+  font-size: 1.2rem; 
+  font-weight: bold; 
+  margin: 0; 
+}
+
+.footer-der {
+  text-align: right;
+}
+
+.sponsors-titulo {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sponsors { 
+  display: flex; 
+  gap: 15px; 
+  justify-content: flex-end;
+}
+
+.sponsors img {
+  height: 50px;
+  object-fit: contain;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+/* Ajuste automático para celulares */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .footer-der {
+    text-align: center;
+  }
+  .sponsors {
+    justify-content: center;
+  }
+}

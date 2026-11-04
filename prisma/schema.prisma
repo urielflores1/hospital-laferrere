@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Paciente {
+  dni      String  @id
+  nombre   String
+  apellido String
+  telefono String?
+  email    String? @unique
+  turnos   Turno[]
+}
+
+model Medico {
+  dni           String    @id
+  nombre        String
+  apellido      String
+  especialidad  String
+  duracionTurno Int       // en minutos
+  password      String?
+  horarios      Horario[]
+  turnos        Turno[]
+}
+
+model Horario {
+  id         Int    @id @default(autoincrement())
+  dia        String // Lunes, Martes, etc.
+  horaInicio String
+  horaFin    String
+  medicoDni  String
+  medico     Medico @relation(fields: [medicoDni], references: [dni])
+}
+
+model Turno {
+  id          Int         @id @default(autoincrement())
+  fecha       String
+  hora        String
+  motivo      String?
+  estado      EstadoTurno @default(PENDIENTE)
+  pacienteDni String
+  paciente    Paciente    @relation(fields: [pacienteDni], references: [dni])
+  medicoDni   String
+  medico      Medico      @relation(fields: [medicoDni], references: [dni])
+}
+
+enum EstadoTurno {
+  PENDIENTE
+  CONFIRMADO
+  CANCELADO
+}

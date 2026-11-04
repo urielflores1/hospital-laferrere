@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Laferrere</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <header class="no-print">
+    <div class="brand">
+      <img src="escudo.png" alt="Escudo Laferrere" onerror="this.style.display='none'">
+      <h1>Hospital Laferrere</h1>
+    </div>
+  </header>
+
+  <!-- PANTALLA PRINCIPAL -->
+  <div id="pantallaInicio" class="hero no-print">
+    <h2>Portal de Pacientes y Profesionales</h2>
+    <p>Seleccione la opción correspondiente para continuar</p>
+
+    <div class="portal-options">
+      <div class="option-card" onclick="mostrarSeccion('seccionTurnos')">
+        <h3>Reservar Turno</h3>
+        <p>Consulte disponibilidad y reserve sus turnos médicos.</p>
+      </div>
+      
+      <div class="option-card" onclick="mostrarSeccion('seccionMisTurnos')">
+        <h3>Mis Turnos</h3>
+        <p>Consulte, cancele o modifique sus turnos pendientes.</p>
+      </div>
+
+      <div class="option-card" onclick="mostrarSeccion('seccionMedico')">
+        <h3>Soy Médico</h3>
+        <p>Administre sus turnos asignados y su agenda diaria.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESERVAR TURNO -->
+  <div id="seccionTurnos" class="section-container no-print">
+    <button class="btn btn-secondary" onclick="volverInicio()">← Volver al Inicio</button>
+    <div class="card">
+      <h3>Reserva de Turno Médico</h3>
+      <form id="formTurno">
+        <div class="form-group"><label>DNI del Paciente:</label><input type="text" id="pDni" required></div>
+        <div class="form-group"><label>Nombre:</label><input type="text" id="pNombre" required></div>
+        <div class="form-group"><label>Apellido:</label><input type="text" id="pApellido" required></div>
+        <div class="form-group"><label>Celular:</label><input type="tel" id="pCelular" required></div>
+        <div class="form-group"><label>Correo electrónico (Gmail):</label><input type="email" id="pEmail" placeholder="ejemplo@gmail.com" required></div>
+        
+        <div class="form-group"><label>Médico Especialista:</label><select id="tMedico" required></select></div>
+        <div class="form-group"><label>Fecha:</label><input type="date" id="tFecha" required></div>
+        <div class="form-group">
+          <label>Horarios Disponibles:</label>
+          <div id="timeGrid" class="time-grid"></div>
+          <input type="hidden" id="tHora" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Deje una nota de su problema (Opcional):</label>
+          <textarea id="tMotivo" rows="3" placeholder="Describa brevemente su dolencia..."></textarea>
+        </div>
+        <button type="submit" class="btn" id="btnConfirmarTurno">Confirmar Cita</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MIS TURNOS (PACIENTES) -->
+  <div id="seccionMisTurnos" class="section-container no-print">
+    <button class="btn btn-secondary" onclick="volverInicio()">← Volver al Inicio</button>
+    <div class="card">
+      <h3>Mis Turnos</h3>
+      <form id="formBuscarTurnos">
+        <div class="form-group">
+          <label>Ingrese su DNI para ver sus turnos:</label>
+          <input type="text" id="buscarDniPaciente" required placeholder="Ej: 12345678">
+        </div>
+        <button type="submit" class="btn" id="btnBuscarTurnos">Buscar Turnos</button>
+      </form>
+      <div id="resultadoTurnosPaciente" style="display: none; margin-top: 20px;">
+        <div class="table-responsive">
+          <table class="tabla-hospital">
+            <thead><tr><th>Fecha y Hora</th><th>Médico</th><th>Estado</th><th>Acción</th></tr></thead>
+            <tbody id="tablaMisTurnosBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN MÉDICOS -->
+  <div id="seccionMedico" class="section-container">
+    <button class="btn btn-secondary no-print" onclick="volverInicio()">← Volver al Inicio</button>
+
+    <div id="bloqueAuthMedico" class="no-print">
+      <div class="tab-buttons">
+        <button class="tab-btn active" id="btnTabLogin" onclick="cambiarTabMedico('login')">Iniciar Sesión</button>
+        <button class="tab-btn" id="btnTabRegistro" onclick="cambiarTabMedico('registro')">Registrarse</button>
+      </div>
+
+      <div id="medicoLoginCard" class="card">
+        <h3>Acceso Médicos</h3>
+        <form id="formLoginMedico">
+          <div class="form-group"><label>DNI:</label><input type="text" id="loginMedicoDni" required></div>
+          <div class="form-group"><label>Contraseña:</label><input type="password" id="loginMedicoPassword" required></div>
+          <button type="submit" class="btn">Ingresar</button>
+        </form>
+      </div>
+
+      <div id="medicoClaveCard" class="card" style="display: none;">
+        <h3>Clave Institucional</h3>
+        <form id="formClaveMedico">
+          <div class="form-group"><input type="password" id="claveInstitucional" placeholder="Clave" required></div>
+          <button type="submit" class="btn">Validar Clave</button>
+        </form>
+      </div>
+
+      <div id="medicoRegistroCard" class="card" style="display: none;">
+        <h3>Registro de Profesional</h3>
+        <form id="formRegistroMedico">
+          <div class="form-group"><label>DNI:</label><input type="text" id="mDni" required></div>
+          <div class="form-group"><label>Nombre:</label><input type="text" id="mNombre" required></div>
+          <div class="form-group"><label>Apellido:</label><input type="text" id="mApellido" required></div>
+          <div class="form-group"><label>Especialidad:</label><input type="text" id="mEspecialidad" required></div>
+          <div class="form-group"><label>Contraseña:</label><input type="password" id="mPassword" required></div>
+          <button type="submit" class="btn">Crear Cuenta</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- PANEL MÉDICO -->
+    <div id="panelMedico" class="card" style="display: none;">
+      <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+        <h3 id="tituloMedico" style="border: none; margin: 0; padding: 0;">Panel del Médico</h3>
+        <div class="no-print" style="display: flex; gap: 10px; align-items: center;">
+          <label style="font-weight: bold; font-size: 0.9rem;">Ver fecha:</label>
+          <input type="date" id="filtroFechaMedico" class="form-control" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+          <button class="btn btn-small" onclick="imprimirAgenda()" style="background-color: #17a2b8;">🖨️ Imprimir</button>
+          <button class="btn btn-secondary btn-small" style="margin: 0;" onclick="cerrarSesionMedico()">Salir</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="tabla-hospital">
+          <thead><tr><th>Hora</th><th>Paciente</th><th>Contacto</th><th>Nota del Problema</th><th>Estado</th><th class="no-print">Acción</th></tr></thead>
+          <tbody id="tablaTurnosMedico"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER ACTUALIZADO -->
+  <footer class="site-footer no-print">
+    <div class="footer-content">
+      <div class="footer-izq">
+        <p>Gestión de Turnos - Consultorio Médico</p>
+      </div>
+      <div class="footer-der">
+        <p class="sponsors-titulo">Sponsors</p>
+        <div class="sponsors">
+          <!-- Cambiá los src por los nombres reales de tus imágenes -->
+          <img src="sponsor1.png" alt="Sponsor 1">
+          <img src="sponsor2.png" alt="Sponsor 2">
+          <img src="sponsor3.png" alt="Sponsor 3">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
