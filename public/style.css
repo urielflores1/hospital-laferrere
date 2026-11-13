@@ -17,11 +17,32 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
 
 .hero { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; text-align: center; }
 .hero h2 { font-size: 2rem; color: var(--verde-lafe); margin-bottom: 10px; }
-.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 20px 0 40px 0; }
+.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 20px 0 25px 0; }
 
 .option-card { background: var(--blanco); border: 2px solid #e0e0e0; border-radius: 12px; padding: 25px; width: 280px; cursor: pointer; transition: 0.3s; }
 .option-card:hover { border-color: var(--verde-lafe); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
 .option-card h3 { color: var(--verde-lafe); margin-bottom: 10px; }
+
+/* BLOQUE DE DIRECCIÓN Y CELULAR EN INICIO */
+.info-contacto {
+  background: var(--blanco);
+  border: 2px solid var(--verde-lafe);
+  border-radius: 12px;
+  padding: 18px 30px;
+  max-width: 480px;
+  width: 100%;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+.info-contacto p {
+  font-size: 1.05rem;
+  color: var(--texto);
+  margin: 6px 0;
+}
+.info-contacto strong {
+  color: var(--verde-lafe);
+}
 
 /* WIDGET DEL CLUB RESTAURADO */
 .club-widget { background: var(--verde-lafe); padding: 10px; border-radius: 12px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: center; max-width: 800px; width: 100%; margin: 20px auto; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
@@ -62,12 +83,6 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
 .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 16px; height: 16px; animation: spin 1s linear infinite; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* FOOTER Y SPONSORS RESTAURADOS */
-.site-footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: auto; }
-.footer-content p { margin-bottom: 10px; font-weight: bold; }
-.sponsors { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-.sponsor-badge { background: #555; padding: 5px 15px; border-radius: 4px; font-size: 0.85rem; }
-
 @media print {
   .no-print { display: none !important; }
   body { background: white; color: black; }
@@ -75,6 +90,7 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
   #panelMedico { display: block; position: absolute; top: 0; left: 0; width: 100%; }
   .tabla-hospital th { background-color: #ddd !important; color: black !important; }
 }
+
 /* FOOTER Y SPONSORS ACTUALIZADOS */
 .site-footer { 
   background-color: #006633; 
@@ -88,7 +104,7 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Evita que se rompa en pantallas chicas */
+  flex-wrap: wrap;
 }
 
 .footer-izq p { 
