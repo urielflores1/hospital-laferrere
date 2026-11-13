@@ -17,32 +17,11 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
 
 .hero { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; text-align: center; }
 .hero h2 { font-size: 2rem; color: var(--verde-lafe); margin-bottom: 10px; }
-.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 20px 0 25px 0; }
+.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 20px 0 40px 0; }
 
 .option-card { background: var(--blanco); border: 2px solid #e0e0e0; border-radius: 12px; padding: 25px; width: 280px; cursor: pointer; transition: 0.3s; }
 .option-card:hover { border-color: var(--verde-lafe); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
 .option-card h3 { color: var(--verde-lafe); margin-bottom: 10px; }
-
-/* BLOQUE DE DIRECCIÓN Y CELULAR EN INICIO */
-.info-contacto {
-  background: var(--blanco);
-  border: 2px solid var(--verde-lafe);
-  border-radius: 12px;
-  padding: 18px 30px;
-  max-width: 480px;
-  width: 100%;
-  margin: 10px auto 0 auto;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-}
-.info-contacto p {
-  font-size: 1.05rem;
-  color: var(--texto);
-  margin: 6px 0;
-}
-.info-contacto strong {
-  color: var(--verde-lafe);
-}
 
 /* WIDGET DEL CLUB RESTAURADO */
 .club-widget { background: var(--verde-lafe); padding: 10px; border-radius: 12px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: center; max-width: 800px; width: 100%; margin: 20px auto; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
@@ -105,10 +84,11 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
 .footer-izq p { 
-  font-size: 1.2rem; 
+  font-size: 1.05rem; 
   font-weight: bold; 
   margin: 0; 
 }
