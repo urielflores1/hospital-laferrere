@@ -15,9 +15,9 @@ header { background-color: var(--verde-lafe); color: var(--blanco); padding: 15p
 .brand img { height: 60px; }
 .brand h1 { font-size: 1.8rem; font-weight: 700; margin: 0; }
 
-.hero { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; text-align: center; }
+.hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; }
 .hero h2 { font-size: 2rem; color: var(--verde-lafe); margin-bottom: 10px; }
-.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 20px 0 40px 0; }
+.portal-options { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; width: 100%; margin: 25px 0 0 0; }
 
 .option-card { background: var(--blanco); border: 2px solid #e0e0e0; border-radius: 12px; padding: 25px; width: 280px; cursor: pointer; transition: 0.3s; }
 .option-card:hover { border-color: var(--verde-lafe); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
